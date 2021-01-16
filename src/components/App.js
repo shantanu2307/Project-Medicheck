@@ -8,7 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import Landing from "./Landing.jsx";
-
+import Public from "./Public";
 function App() {
   return (
     <div>
@@ -16,6 +16,7 @@ function App() {
         <AuthProvider>
           <Switch>
             <Route exact path="/" component={Landing} />
+            <Route path="/public" component={Public} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/updateprofile" component={UpdateProfile} />
             <Route path="/signup" component={Signup} />
