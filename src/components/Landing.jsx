@@ -1,12 +1,12 @@
 import "./App.css";
 import Vector from "./vector.jsx";
 import Header from "./Header.jsx";
-import Navbar from "./Navbar.js";
+import StaticNavVar from "./StaticNavBar";
 
 function Landing() {
   return (
     <div>
-      <Navbar />,
+      <StaticNavVar />
       <Vector />,
       <Header />
     </div>
