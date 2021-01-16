@@ -1,0 +1,65 @@
+body {
+  /* background-image: url('https://lh3.googleusercontent.com/proxy/R6Syxqx0u-CygXrrOUL0zS42iBKmmxJwmBHtUvJWHytvM-aelPokMt8G51ioh_w0VsGKA0nfA2ZRTDbBwf_KAMSuTVFmdD6DzGYYzKGMQj5c8EhDTr6M62mgHv5_aD78rr5-1e7K'); */
+  background-image: url('https://s6c7h4e3.stackpathcdn.com/wp-content/uploads/2020/07/bigstock-Background-Purple-And-White-B-333163945.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.navbar-custom{
+  background-color: rgb(93, 7, 173);
+}
+
+.navbar-brand{
+  font-size:2rem;
+}
+
+.vector{
+  margin-top: 1rem;
+  margin-right: 9rem;
+  float: right;
+}
+
+@media screen and (max-width: 600px) {
+  .vector{
+    visibility: hidden;
+    display: none;
+  }
+}
+
+.medAuth{
+  font-size: 4rem;
+  color: rgb(80, 15, 141);
+}
+
+
+.medVerify{
+  font-size: 1.5rem;
+  color: rgb(24, 24, 24);
+}
+
+.publicBtn{
+  background-color: blueviolet;
+  color: white;
+  margin:20px;
+  width: 10rem;
+}
+
+.rtlBtn{
+  color: white;
+  background-color: blueviolet;
+  width: 10rem;
+  margin:20px;
+}
+
+.loginBtn{
+  color: white;
+  background-color: rgb(161, 146, 245);
+  width: 7rem;
+}
+
+.mainText{
+  margin-top: 6rem;
+  text-align: center;
+}
