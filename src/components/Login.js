@@ -15,7 +15,7 @@ export default function Login() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      history.push("/dashboard");
     } catch {
       setError("Failed to Sign In");
     }
@@ -50,7 +50,7 @@ export default function Login() {
           </div>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
+      <div className="w-100 text-center mt-2 text-danger">
         Need an account ? <Link to="/signup">Sign Up</Link>
       </div>
     </>

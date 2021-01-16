@@ -1,14 +1,14 @@
-import './App.css';
+import "./App.css";
 import Vector from "./vector.jsx";
 import Header from "./Header.jsx";
-import Navbar from "./Navbar.jsx";
+import Navbar from "./Navbar.js";
 
 function Landing() {
   return (
-    <div className="App">
+    <div>
       <Navbar />,
       <Vector />,
-      <Header />  
+      <Header />
     </div>
   );
 }

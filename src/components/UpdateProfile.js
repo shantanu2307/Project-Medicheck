@@ -28,7 +28,7 @@ export default function UpdateProfile() {
     }
     Promise.all(promises)
       .then(() => {
-        history.push("/");
+        history.push("/dashboard");
       })
       .catch(setError("Fail to update account"))
       .finally(() => {
@@ -78,8 +78,8 @@ export default function UpdateProfile() {
           </Form>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
-        <Link to="/">Cancel</Link>
+      <div className="w-100 text-danger text-center mt-2">
+        <Link to="/dashboard">Cancel</Link>
       </div>
     </>
   );

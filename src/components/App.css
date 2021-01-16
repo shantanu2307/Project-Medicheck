@@ -15,6 +15,11 @@ body {
   font-size:2rem;
 }
 
+.navbar-item{
+  font-size: 1.2rem;
+  color:white
+}
+
 .vector{
   margin-top: 1rem;
   margin-right: 9rem;

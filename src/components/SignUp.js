@@ -22,7 +22,7 @@ export default function SignUp() {
       setLoading(true);
       const x = await signup(emailRef.current.value, passwordRef.current.value);
       console.log("UID", x.user.uid);
-      history.push("/");
+      history.push("/dashboard");
     } catch {
       setError("Failed to create an account");
     }
@@ -74,7 +74,7 @@ export default function SignUp() {
           </Form>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
+      <div className="w-100 text-center mt-2 text-danger">
         Already have an account ? <Link to="/login">Log In</Link>
       </div>
     </>
