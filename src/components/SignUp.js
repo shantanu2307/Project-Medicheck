@@ -7,6 +7,7 @@ export default function SignUp() {
   const emailRef = useRef();
   const companyRef = useRef();
   const passwordRef = useRef();
+  const roleRef = useRef();
   const nameRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup } = useAuth();
@@ -44,11 +45,11 @@ export default function SignUp() {
             </Form.Group>
             <Form.Group id="company">
               <Form.Label>Company</Form.Label>
-              <Form.Control
-                type="text"
-                ref={companyRef}
-                required
-              ></Form.Control>
+              <Form.Control type="text" ref={companyRef}></Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Role</Form.Label>
+              <Form.Control type="text" ref={roleRef}></Form.Control>
             </Form.Group>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>

@@ -10,7 +10,7 @@ function Header() {
       </Link>
       <Link to="/login">
         <button className="btn btn-custom rtlBtn" type="link">
-          Retailers
+          Retailers/Manufacturers
         </button>
       </Link>
     </div>

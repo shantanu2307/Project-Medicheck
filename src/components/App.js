@@ -9,6 +9,8 @@ import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import Landing from "./Landing.jsx";
 import Public from "./Public";
+import Manufacturer from "./Manufacturers";
+import Shipment from "./Shipment";
 function App() {
   return (
     <div>
@@ -17,6 +19,8 @@ function App() {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route path="/public" component={Public} />
+            <PrivateRoute path="/manufacturer" component={Manufacturer} />
+            <PrivateRoute path="createshipment" component={Shipment} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/updateprofile" component={UpdateProfile} />
             <Route path="/signup" component={Signup} />
