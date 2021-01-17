@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Button, NavDropdown } from "react-bootstrap";
 import "./App.css";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
@@ -21,30 +21,37 @@ export default function NavBar() {
     <>
       <Navbar
         sticky="top"
-        className="navbar navbar-expand-lg navbar-dark navbar-custom"
+        expand="lg"
+        style={{ backgroundColor: "rgb(93, 7, 173)" }}
       >
         <Navbar.Brand>
-          <Link to="/">
-            <strong>
-              <span className="navbar-brand"> MediCheck</span>
-            </strong>
+          <Link to="/" className="mr-lg-4" style={{ color: "white" }}>
+            MediCheck
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          style={{ backgroundColor: "white" }}
+        />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-3">
-            <Nav.Item className="mr-3">
-              <Link to="/dashboard" className="navbar-item">
+          <Nav className="mr-auto">
+            <Nav.Item>
+              <Link to="/dashboard" className="navbar-item mr-lg-3">
                 Dashboard
               </Link>
             </Nav.Item>
-            <Nav.Item className="mr-3">
-              <Link to="/updateprofile" className="navbar-item">
+            <Nav.Item>
+              <Link to="/updateprofile" className="navbar-item mr-lg-3">
                 Update Profile
               </Link>
             </Nav.Item>
-            <Nav.Item className="mr-3 navbar-item" onClick={handleLogOut}>
-              Logout
+            <Nav.Item>
+              <div
+                onClick={handleLogOut}
+                className="navbar-item logout-div mr-lg-3"
+              >
+                Logout
+              </div>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>

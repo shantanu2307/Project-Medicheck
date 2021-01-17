@@ -7,13 +7,12 @@ export default function StaticNavBar() {
     <>
       <Navbar
         sticky="top"
-        className="navbar navbar-expand-lg navbar-dark navbar-custom"
+        expand="lg"
+        style={{ backgroundColor: "rgb(93, 7, 173)" }}
       >
         <Navbar.Brand>
-          <Link to="/">
-            <strong>
-              <span className="navbar-brand"> MediCheck</span>
-            </strong>
+          <Link to="/" className="mr-lg-4" style={{ color: "white" }}>
+            MediCheck
           </Link>
         </Navbar.Brand>
       </Navbar>

@@ -8,9 +8,9 @@ export default function Manufacturers() {
   return (
     <>
       <Navbar className="mt-0 w-100" style={{ position: "absolute" }} />
-      <h1>Welcome {currentUser.email}</h1>
-      <div className="mt-4 text-primary fs-5 ">
-        To track the medicine, kindly enter Product ID or scan QR code.
+      <h1 className="text-center">Welcome {currentUser.email}</h1>
+      <div className="mt-4 fs-5 text-center ">
+        Kindly Scan the product or enter the product ID to track product.
       </div>
       <br />
       <br />
@@ -24,13 +24,25 @@ export default function Manufacturers() {
               placeholder="Enter Product ID"
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button
+            variant="primary"
+            type="submit"
+            style={{
+              width: "15rem",
+              margin: "20px",
+              backgroundColor: "blueviolet",
+              color: "white",
+            }}
+          >
             Submit
           </Button>
         </Form>
       </div>
       <br />
-      <Card className="container mt-lg-5">
+      <Card
+        className="container mt-lg-5 mb-lg-5"
+        style={{ height: "400px", width: "400px" }}
+      >
         <Card.Header className="bg-white">
           <h1 className="text-center">SCAN QR CODE</h1>
         </Card.Header>

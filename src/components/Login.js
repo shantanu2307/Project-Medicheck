@@ -43,7 +43,17 @@ export default function Login() {
                 required
               ></Form.Control>
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button
+              disabled={loading}
+              className="w-100"
+              type="submit"
+              style={{
+                width: "15rem",
+                maxWidth: "15rem",
+                backgroundColor: "blueviolet",
+                color: "white",
+              }}
+            >
               Login
             </Button>
           </Form>

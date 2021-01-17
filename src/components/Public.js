@@ -7,7 +7,7 @@ export default function Public() {
     <div>
       <StaticNavBar />
       <h1 className="header text-center"> Welcome Customer!</h1>
-      <div className="mt-4 text-primary fs-5 ">
+      <div className="mt-4 fs-5 text-center ">
         To check for authenticity, scan using QR Code or enter product ID.
       </div>
       <br />
@@ -22,13 +22,25 @@ export default function Public() {
               placeholder="Enter Product ID"
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button
+            variant="primary"
+            type="submit"
+            style={{
+              width: "15rem",
+              margin: "20px",
+              backgroundColor: "blueviolet",
+              color: "white",
+            }}
+          >
             Submit
           </Button>
         </Form>
       </div>
       <br />
-      <Card className="container mt-lg-5">
+      <Card
+        className="container mt-lg-5 mb-lg-5"
+        style={{ height: "400px", width: "400px" }}
+      >
         <Card.Header className="bg-white">
           <h1 className="text-center">SCAN QR CODE</h1>
         </Card.Header>

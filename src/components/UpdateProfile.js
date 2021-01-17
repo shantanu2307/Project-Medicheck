@@ -72,15 +72,27 @@ export default function UpdateProfile() {
                 placeholder="Leave blank to keep the same"
               ></Form.Control>
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button
+              disabled={loading}
+              className="w-100"
+              style={{
+                width: "15rem",
+                maxWidth: "15rem",
+                backgroundColor: "blueviolet",
+                color: "white",
+              }}
+              type="submit"
+            >
               Update Profile
             </Button>
           </Form>
         </Card.Body>
+        <Card.Footer>
+          <div className="w-100 text-danger text-center mt-2">
+            <Link to="/dashboard">Cancel</Link>
+          </div>
+        </Card.Footer>
       </Card>
-      <div className="w-100 text-danger text-center mt-2">
-        <Link to="/dashboard">Cancel</Link>
-      </div>
     </>
   );
 }

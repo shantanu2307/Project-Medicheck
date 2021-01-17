@@ -45,7 +45,16 @@ export default function Shipment() {
               <Form.Label>MRP</Form.Label>
               <Form.Control type="text" ref={priceRef} required></Form.Control>
             </Form.Group>
-            <Button className="w-100" type="submit">
+            <Button
+              className="w-100"
+              type="submit"
+              style={{
+                width: "15rem",
+                maxWidth: "15rem",
+                backgroundColor: "blueviolet",
+                color: "white",
+              }}
+            >
               Sign Up
             </Button>
           </Form>

@@ -11,8 +11,14 @@ body {
   background-color: rgb(93, 7, 173);
 }
 
+.logout-div:hover{
+  color:blue;
+  text-decoration: underline;
+}
+
 .navbar-brand{
   font-size:2rem;
+  color:white
 }
 
 .navbar-item{

@@ -71,15 +71,26 @@ export default function SignUp() {
                 required
               ></Form.Control>
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button
+              disabled={loading}
+              style={{
+                width: "15rem",
+                maxWidth: "15rem",
+                backgroundColor: "blueviolet",
+                color: "white",
+              }}
+              type="submit"
+            >
               Sign Up
             </Button>
           </Form>
         </Card.Body>
+        <Card.Footer>
+          <div className="w-100 text-center mt-2 text-danger">
+            Already have an account ? <Link to="/login">Log In</Link>
+          </div>
+        </Card.Footer>
       </Card>
-      <div className="w-100 text-center mt-2 text-danger">
-        Already have an account ? <Link to="/login">Log In</Link>
-      </div>
     </>
   );
 }
