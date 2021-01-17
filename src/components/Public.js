@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 import QrCode from "./QRCODE";
 import StaticNavBar from "./StaticNavBar";
 export default function Public() {
@@ -13,9 +13,9 @@ export default function Public() {
       <br />
       <br />
       <div>
-        <Form>
+        <Form className="d-grid absolute-center justify-content-center">
           <Form.Group>
-            <Form.Label>Product ID</Form.Label>
+            <Form.Label className="text-center">Product ID :</Form.Label>
             <Form.Control
               className="w-100"
               type="text"
@@ -27,11 +27,17 @@ export default function Public() {
           </Button>
         </Form>
       </div>
-      <div>
-        <div className="h-50 w-100 mt-2">
-          <QrCode />
-        </div>
-      </div>
+      <br />
+      <Card className="container mt-lg-5">
+        <Card.Header className="bg-white">
+          <h1 className="text-center">SCAN QR CODE</h1>
+        </Card.Header>
+        <Card.Body>
+          <div className="h-50 w-100 mt-2">
+            <QrCode />
+          </div>
+        </Card.Body>
+      </Card>
     </div>
   );
 }

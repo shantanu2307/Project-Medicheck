@@ -20,7 +20,7 @@ function App() {
             <Route exact path="/" component={Landing} />
             <Route path="/public" component={Public} />
             <PrivateRoute path="/manufacturer" component={Manufacturer} />
-            <PrivateRoute path="createshipment" component={Shipment} />
+            <PrivateRoute path="/createshipment" component={Shipment} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/updateprofile" component={UpdateProfile} />
             <Route path="/signup" component={Signup} />

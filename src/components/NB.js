@@ -43,11 +43,6 @@ export default function NavBar() {
                 Create Shipment
               </Link>
             </Nav.Item>
-            <Nav.Item className="mr-3">
-              <Link to="/updateprofile" className="navbar-item">
-                Update Profile
-              </Link>
-            </Nav.Item>
             <Nav.Item className="mr-3 navbar-item" onClick={handleLogOut}>
               Logout
             </Nav.Item>
