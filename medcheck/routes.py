@@ -180,9 +180,7 @@ def retailer():
 @app.route('/backend/public', methods=["GET", "POST"])
 def public_info():
     content = request.get_json()
-    # product_id = content["product_id"]
-    print(content)
-    product_id = "123456787"
+    product_id = content["product_id"]
 
     rows = Info.query.filter(Info.product_id == product_id).all()
 
