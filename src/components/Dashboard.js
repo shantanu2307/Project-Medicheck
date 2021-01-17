@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Form, Button } from "react-bootstrap";
 import Navbar from "./Navbar";
 import QrCode from "./QRCODE";
 import { useAuth } from "../contexts/AuthContext";
 export default function Dashboard() {
   const { currentUser } = useAuth();
+  const [keyRef, setkeyRef] = useState("shantanu");
+  const [privateKeyRef, setPrivateKeyRef] = useState();
   return (
     <>
       <Navbar className="mt-0 w-100" style={{ position: "absolute" }} />
@@ -18,11 +20,11 @@ export default function Dashboard() {
         <Form className="d-grid absolute-center justify-content-center">
           <Form.Group>
             <Form.Label className="text-center">Product ID :</Form.Label>
-            <Form.Control
-              className="w-100"
-              type="text"
-              placeholder="Enter Product ID"
-            />
+            <Form.Control className="w-100" type="text" value={keyRef} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label className="text-center">Private Key</Form.Label>
+            <Form.Control ref={privateKeyRef} className="w-100" type="text" />
           </Form.Group>
           <Button
             variant="primary"

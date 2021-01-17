@@ -6,10 +6,10 @@ export default function Shipment() {
   const [nameRef, setNameRef] = useState();
   const [companyRef, setCompanyRef] = useState();
   const [manRef, setManRef] = useState();
+  const [keyRef, setKeyRef] = useState();
   const [priceRef, setPriceRef] = useState();
   const [expRef, setExpRef] = useState();
   function handleSubmit(e) {}
-
   return (
     <>
       <Navbar />
@@ -18,7 +18,7 @@ export default function Shipment() {
           <h2 className="text-center mb-4">Create Shipment</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>Product ID</Form.Label>
+              <Form.Label>Medicine ID</Form.Label>
               <Form.Control
                 type="text"
                 ref={prodNumRef}
@@ -28,10 +28,6 @@ export default function Shipment() {
             <Form.Group id="name">
               <Form.Label>Medicine Name</Form.Label>
               <Form.Control type="text" ref={nameRef} required></Form.Control>
-            </Form.Group>
-            <Form.Group id="Company">
-              <Form.Label>Company</Form.Label>
-              <Form.Control type="text" ref={companyRef}></Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>Manufacture Date</Form.Label>
@@ -45,6 +41,10 @@ export default function Shipment() {
               <Form.Label>MRP</Form.Label>
               <Form.Control type="text" ref={priceRef} required></Form.Control>
             </Form.Group>
+            <Form.Group>
+              <Form.Label>Private Key</Form.Label>
+              <Form.Control type="text" ref={keyRef} required></Form.Control>
+            </Form.Group>
             <Button
               className="w-100"
               type="submit"
@@ -55,7 +55,7 @@ export default function Shipment() {
                 color: "white",
               }}
             >
-              Sign Up
+              Create Shipment
             </Button>
           </Form>
         </Card.Body>

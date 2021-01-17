@@ -1,19 +1,24 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import StaticNavBar from "./StaticNavBar";
 export default function SignUp() {
   const emailRef = useRef();
-  const companyRef = useRef();
   const passwordRef = useRef();
   const roleRef = useRef();
+  const [addressRef, setAddress] = useState();
   const nameRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  function handleChange() {
+    console.log(roleRef.current.value);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -24,7 +29,11 @@ export default function SignUp() {
       setLoading(true);
       const x = await signup(emailRef.current.value, passwordRef.current.value);
       console.log("UID", x.user.uid);
-      history.push("/dashboard");
+      if (roleRef.current.value === "Manufacturer") {
+        history.push("/createshipment");
+      } else {
+        history.push("/dashboard");
+      }
     } catch {
       setError("Failed to create an account");
     }
@@ -43,13 +52,20 @@ export default function SignUp() {
               <Form.Label>Name</Form.Label>
               <Form.Control type="text" ref={nameRef} required></Form.Control>
             </Form.Group>
-            <Form.Group id="company">
-              <Form.Label>Company</Form.Label>
-              <Form.Control type="text" ref={companyRef}></Form.Control>
+            <Form.Group>
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type="text"
+                ref={addressRef}
+                required
+              ></Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>Role</Form.Label>
-              <Form.Control type="text" ref={roleRef}></Form.Control>
+              <Form.Control onChange={handleChange} ref={roleRef} as="select">
+                <option>Manufacturer</option>
+                <option>Retailer</option>
+              </Form.Control>
             </Form.Group>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
