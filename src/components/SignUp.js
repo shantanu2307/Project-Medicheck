@@ -7,7 +7,7 @@ export default function SignUp() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const roleRef = useRef();
-  const [addressRef, setAddress] = useState();
+  const addressRef = useRef();
   const nameRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup } = useAuth();
