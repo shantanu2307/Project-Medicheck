@@ -1,0 +1,8 @@
+from web3 import Web3
+import json
+Med=web3.eth.contract(abi=abi,bytecode=bytecode)
+tx_hash=Med.constructor().transact()
+tx_receipt=web3.eth.waitForTransactionReceipt(tx_hash)
+contract=web3.eth.contract(address=tx_receipt.contractAddress,abi=abi)
+def manufacturer():
+    return contract.functions.newMed().call()

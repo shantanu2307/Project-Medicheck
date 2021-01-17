@@ -3,6 +3,8 @@ from flask import request, jsonify, g
 from medcheck.models import User, Medicine, Info, db
 from medcheck import app
 import datetime
+from datetime import timedelta
+from block import newmedd, addretailer
 
 # Frontend Routes
 
@@ -64,7 +66,6 @@ def get_profile():
     Dict = {
         'uid': row.uid,
         'name': row.name,
-        'company': row.company,
         'role': row.role,
         'location': row.location,
         'email': row.email
@@ -78,12 +79,11 @@ def save_profile():
     content = request.get_json()
     uid = content["uid"]
     name = content["name"]
-    comp = content["company"]
     role = content["role"]
     email = content["email"]
     location = content["location"]
 
-    user = User(uid=uid, name=name, company=comp,
+    user = User(uid=uid, name=name,
                 role=role, email=email, location=location)
 
     db.session.add(user)
@@ -96,29 +96,35 @@ def save_profile():
 def productinfo():
     content = request.get_json()
     product_id = content["product_id"]
-
+    
     # blockchain
+    
 
     return 'Successful', 200
 
 
-@app.route('/backend/medcreate', methods=["POST"])
+@app.route('/backend/medcreate', methods=["POST", "GET"])
 def medCreate():
 
     content = request.get_json()
-    product_id = content["product_id"]
     name = content["name"]
-    company = content["company"]
     mrp = content["mrp"]
+    date = content["date"]
     expiry = content["expiry"]
 
-    medicine = Medicine(name=name, company=company, mrp=mrp,
-                        expiry=expiry, product_id=product_id)
+    product_id = newmedd(name, mrp, expiry, date)
+    product_id = str(product_id)
+
+    List = []
+    Dict = {'product_id': product_id}
+    List.append(Dict)
+
+    medicine = Medicine(product_id=product_id, name=name, mrp=mrp, date=date, expiry=expiry)
 
     db.session.add(medicine)
     db.session.commit()
 
-    return 'New Medicine Added', 200
+    return json.dumps(List)
 
 
 @app.route('/backend/retailer', methods=["GET", "POST"])
@@ -136,7 +142,16 @@ def retailer():
     db.session.add(ret)
     db.session.commit()
 
-    return 'Retailer Info Added', 200
+    user = User.query.filter(User.uid == uid).first()
+    name = user.name
+
+    hexd = addretailer(product_id, date, location, name)
+
+    List = []
+    Dict = {'hex': hexd}
+    List.append(Dict)
+
+    return json.dumps(List)
 
 
 @app.route('/backend/retailerinfo', methods=["GET"])
@@ -146,7 +161,8 @@ def retailer_info():
     uid = content["uid"]
     product_id = content["product_id"]
 
-    row = Info.query.filter(Info.uid == uid, Info.product_id == product_id).first()
+    row = Info.query.filter(
+        Info.uid == uid, Info.product_id == product_id).first()
 
     List = []
     Dict = {
@@ -157,6 +173,7 @@ def retailer_info():
     }
     List.append(Dict)
     return json.dumps(List)
+
 
 @app.route('/backend/public', methods=["GET", "POST"])
 def public_info():
@@ -170,9 +187,9 @@ def public_info():
 
     for row in rows:
         Dict = {
-            'uid':row.uid,
-            'product_id':row.product_id,
-            'location':row.location,
+            'uid': row.uid,
+            'product_id': row.product_id,
+            'location': row.location,
             'date': row.date
         }
         List.append(Dict)
