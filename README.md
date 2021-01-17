@@ -1,6 +1,6 @@
 #LINKS
 Link to the PPT: https://drive.google.com/drive/folders/1QG7DfazAdYYEaMcQjaFxUmOv4Eqsq5lI?usp=sharing  
-SETUP:-
+SETUP:- https://drive.google.com/file/d/1LH4lni5EmbhGZAkrg40pszisS6NlSFjK/view?usp=sharing
 
 1. BLOCKCHAIN:-
 
