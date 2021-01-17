@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Navbar from "./NB";
+import axios from "axios";
 import { Card, Form, Button } from "react-bootstrap";
 export default function Shipment() {
-  const [prodNumRef, setProdNumRef] = useState();
-  const [nameRef, setNameRef] = useState();
-  const [companyRef, setCompanyRef] = useState();
-  const [manRef, setManRef] = useState();
-  const [priceRef, setPriceRef] = useState();
-  const [expRef, setExpRef] = useState();
-  function handleSubmit(e) {}
-
+  const prodNumRef = useRef();
+  const nameRef = useRef();
+  const manRef = useRef();
+  const keyRef = useRef();
+  const priceRef = useRef();
+  const expRef = useRef();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const response = await axios.post("", {});
+  }
   return (
     <>
       <Navbar />
@@ -18,7 +21,7 @@ export default function Shipment() {
           <h2 className="text-center mb-4">Create Shipment</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>Product ID</Form.Label>
+              <Form.Label>Medicine ID</Form.Label>
               <Form.Control
                 type="text"
                 ref={prodNumRef}
@@ -28,10 +31,6 @@ export default function Shipment() {
             <Form.Group id="name">
               <Form.Label>Medicine Name</Form.Label>
               <Form.Control type="text" ref={nameRef} required></Form.Control>
-            </Form.Group>
-            <Form.Group id="Company">
-              <Form.Label>Company</Form.Label>
-              <Form.Control type="text" ref={companyRef}></Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>Manufacture Date</Form.Label>
@@ -45,6 +44,10 @@ export default function Shipment() {
               <Form.Label>MRP</Form.Label>
               <Form.Control type="text" ref={priceRef} required></Form.Control>
             </Form.Group>
+            <Form.Group>
+              <Form.Label>Private Key</Form.Label>
+              <Form.Control type="text" ref={keyRef} required></Form.Control>
+            </Form.Group>
             <Button
               className="w-100"
               type="submit"
@@ -54,8 +57,9 @@ export default function Shipment() {
                 backgroundColor: "blueviolet",
                 color: "white",
               }}
+              onClick={handleSubmit}
             >
-              Sign Up
+              Create Shipment
             </Button>
           </Form>
         </Card.Body>

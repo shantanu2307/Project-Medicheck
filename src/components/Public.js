@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import QrCode from "./QRCODE";
+import axios from "axios";
 import StaticNavBar from "./StaticNavBar";
 export default function Public() {
+  const productIdRef = useRef();
+  const [idState, setidState] = useState("");
+  const [loading, setLoading] = useState(true);
+  function getData(data) {
+    setidState(data);
+    setLoading(false);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
   return (
     <div>
       <StaticNavBar />
@@ -19,6 +30,8 @@ export default function Public() {
             <Form.Control
               className="w-100"
               type="text"
+              ref={productIdRef}
+              value={idState}
               placeholder="Enter Product ID"
             />
           </Form.Group>
@@ -31,25 +44,28 @@ export default function Public() {
               backgroundColor: "blueviolet",
               color: "white",
             }}
+            onClick={handleSubmit}
           >
             Submit
           </Button>
         </Form>
       </div>
       <br />
-      <Card
-        className="container mt-lg-5 mb-lg-5"
-        style={{ height: "400px", width: "400px" }}
-      >
-        <Card.Header className="bg-white">
-          <h1 className="text-center">SCAN QR CODE</h1>
-        </Card.Header>
-        <Card.Body>
-          <div className="h-50 w-100 mt-2">
-            <QrCode />
-          </div>
-        </Card.Body>
-      </Card>
+      {loading && (
+        <Card
+          className="container mt-lg-5 mb-lg-5"
+          style={{ height: "400px", width: "400px" }}
+        >
+          <Card.Header className="bg-white">
+            <h1 className="text-center">SCAN QR CODE</h1>
+          </Card.Header>
+          <Card.Body>
+            <div className="h-50 w-100 mt-2">
+              <QrCode xd={getData} />
+            </div>
+          </Card.Body>
+        </Card>
+      )}
     </div>
   );
 }

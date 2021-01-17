@@ -36,11 +36,6 @@ export default function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Item>
-              <Link to="/manufacturer" className="navbar-item mr-lg-3">
-                Dashboard
-              </Link>
-            </Nav.Item>
-            <Nav.Item>
               <Link to="/createshipment" className="navbar-item mr-lg-3">
                 Create Shipment
               </Link>
