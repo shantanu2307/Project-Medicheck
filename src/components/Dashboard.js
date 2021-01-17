@@ -27,20 +27,18 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const privateKeyRef = useRef();
   const [sent, setSent] = useState(false);
+  const [data, setData] = useState();
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(getLocation());
-    const user = await axios.get("/backend/userprofile", {
-      uid: currentUser.uid,
-    });
     const response = await axios.post("/backend/retailer", {
       product_id: idRef.current.value,
-      name: user.name,
-      address: user.address,
-      date: String(Date.now()),
+      uid: currentUser.uid,
       location: getLocation(),
-      private_key: privateKeyRef,
+      private_key: privateKeyRef.current.value,
     });
+    console.log(response);
+    setData(response.data[0].hex);
     setSent(true);
   }
   function getData(data) {
@@ -58,7 +56,7 @@ export default function Dashboard() {
       <br />
       <div>
         <Form className="d-grid absolute-center justify-content-center">
-          {sent && <Alert variant="success">{"Your data has been sent"}</Alert>}
+          {sent && <Alert variant="success">Hex: {data}</Alert>}
           <Form.Group>
             <Form.Label className="text-center">Product ID :</Form.Label>
             <Form.Control
@@ -70,7 +68,7 @@ export default function Dashboard() {
           </Form.Group>
           <Form.Group>
             <Form.Label className="text-center">Private Key</Form.Label>
-            <Form.Control ref={privateKeyRef} className="w-100" type="text" />
+            <Form.Control ref={privateKeyRef} className="w-100" type="password" />
           </Form.Group>
           <Button
             variant="primary"

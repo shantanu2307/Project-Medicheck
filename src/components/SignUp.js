@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
+import axios from "axios";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import StaticNavBar from "./StaticNavBar";
@@ -29,6 +30,13 @@ export default function SignUp() {
       setLoading(true);
       const x = await signup(emailRef.current.value, passwordRef.current.value);
       console.log("UID", x.user.uid);
+      const response = await axios.post("/backend/saveprofile/", {
+        uid: x.user.uid,
+        name: nameRef.current.value,
+        role: roleRef.current.value,
+        address: addressRef.current.value,
+        email: emailRef.current.value,
+      });
       if (roleRef.current.value === "Manufacturer") {
         history.push("/createshipment");
       } else {

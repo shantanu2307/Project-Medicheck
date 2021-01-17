@@ -7,17 +7,37 @@ export default function Public() {
   const productIdRef = useRef();
   const [idState, setidState] = useState("");
   const [loading, setLoading] = useState(true);
+  const [responseState, setResponseState] = useState();
   function getData(data) {
     setidState(data);
     setLoading(false);
   }
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    console.log(idState);
+    const response = await axios.get("/backend/public", {
+      product_id: idState.toString(),
+    });
+    const x = response.data.map((userDetails) => {
+      return (
+        <div className="text-center">
+          <div>
+            <strong>Name:</strong> {userDetails.name} <strong>Role:</strong>
+            {"Retailer"} <strong>Location:</strong>:{userDetails.location}{" "}
+            <strong>Date:</strong>
+            {userDetails.date}
+          </div>
+        </div>
+      );
+    });
+    setResponseState(x);
   }
+
   return (
     <div>
       <StaticNavBar />
       <h1 className="header text-center"> Welcome Customer!</h1>
+
       <div className="mt-4 fs-5 text-center ">
         To check for authenticity, scan using QR Code or enter product ID.
       </div>
@@ -48,6 +68,7 @@ export default function Public() {
           >
             Submit
           </Button>
+          <div className="text-center">{responseState}</div>
         </Form>
       </div>
       <br />

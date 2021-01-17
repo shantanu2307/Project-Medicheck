@@ -1,17 +1,24 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Navbar from "./NB";
 import axios from "axios";
-import { Card, Form, Button } from "react-bootstrap";
+import { Card, Form, Button, Alert } from "react-bootstrap";
 export default function Shipment() {
-  const prodNumRef = useRef();
   const nameRef = useRef();
   const manRef = useRef();
   const keyRef = useRef();
   const priceRef = useRef();
   const expRef = useRef();
+  const [loading, setLoading] = useState(false);
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await axios.post("", {});
+    const response = await axios.post("/backend/medcreate", {
+      name: nameRef.current.value,
+      mrp: priceRef.current.value,
+      date: manRef.current.value,
+      expiry: expRef.current.value,
+      private_key: keyRef.current.value,
+    });
+    setLoading(true);
   }
   return (
     <>
@@ -19,15 +26,10 @@ export default function Shipment() {
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Create Shipment</h2>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <Form.Label>Medicine ID</Form.Label>
-              <Form.Control
-                type="text"
-                ref={prodNumRef}
-                required
-              ></Form.Control>
-            </Form.Group>
+          <Form>
+            {loading && (
+              <Alert variant="success">Your Submission has been recorded</Alert>
+            )}
             <Form.Group id="name">
               <Form.Label>Medicine Name</Form.Label>
               <Form.Control type="text" ref={nameRef} required></Form.Control>
@@ -46,7 +48,11 @@ export default function Shipment() {
             </Form.Group>
             <Form.Group>
               <Form.Label>Private Key</Form.Label>
-              <Form.Control type="text" ref={keyRef} required></Form.Control>
+              <Form.Control
+                type="password"
+                ref={keyRef}
+                required
+              ></Form.Control>
             </Form.Group>
             <Button
               className="w-100"

@@ -7,8 +7,9 @@ class User(db.Model):
     uid = db.Column(db.String(100), primary_key=True)
     name = db.Column(db.String(100))
     role = db.Column(db.String(100))
-    location = db.Column(db.String(100))
+    address = db.Column(db.String(100))
     email = db.Column(db.String(100))
+
 
 class Medicine(db.Model):
     __bind_key__ = 'med'
@@ -19,7 +20,7 @@ class Medicine(db.Model):
     mrp = db.Column(db.String(100))
     date = db.Column(db.String(100))
     expiry = db.Column(db.String(100))
-    
+
 
 class Info(db.Model):
     __bind_key__ = 'med'

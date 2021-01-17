@@ -67,7 +67,7 @@ def get_profile():
         'uid': row.uid,
         'name': row.name,
         'role': row.role,
-        'location': row.location,
+        'address': row.address,
         'email': row.email
     }
     List.append(Dict)
@@ -81,10 +81,10 @@ def save_profile():
     name = content["name"]
     role = content["role"]
     email = content["email"]
-    location = content["location"]
+    location = content["address"]
 
     user = User(uid=uid, name=name,
-                role=role, email=email, location=location)
+                role=role, email=email, address=location)
 
     db.session.add(user)
     db.session.commit()
@@ -132,10 +132,12 @@ def retailer():
 
     content = request.get_json()
     uid = content["uid"]
-    product_id = content["product_id"]
+    productid = content["product_id"]
+    product_id = int(productid)
     location = content["location"]
 
     date = datetime.datetime.now()
+    date = str(date)
 
     ret = Info(uid=uid, product_id=product_id, location=location, date=date)
 
@@ -154,31 +156,33 @@ def retailer():
     return json.dumps(List)
 
 
-@app.route('/backend/retailerinfo', methods=["GET"])
-def retailer_info():
+# @app.route('/backend/retailerinfo', methods=["GET"])
+# def retailer_info():
 
-    content = request.get_json()
-    uid = content["uid"]
-    product_id = content["product_id"]
+#     content = request.get_json()
+#     uid = content["uid"]
+#     product_id = content["product_id"]
 
-    row = Info.query.filter(
-        Info.uid == uid, Info.product_id == product_id).first()
+#     row = Info.query.filter(
+#         Info.uid == uid, Info.product_id == product_id).first()
 
-    List = []
-    Dict = {
-        'uid': row.uid,
-        'product_id': row.product_id,
-        'date': row.date,
-        'location': row.location
-    }
-    List.append(Dict)
-    return json.dumps(List)
+#     List = []
+#     Dict = {
+#         'uid': row.uid,
+#         'product_id': row.product_id,
+#         'date': row.date,
+#         'location': row.location
+#     }
+#     List.append(Dict)
+#     return json.dumps(List)
 
 
 @app.route('/backend/public', methods=["GET", "POST"])
 def public_info():
     content = request.get_json()
-    product_id = content["product_id"]
+    # product_id = content["product_id"]
+    print(content)
+    product_id = "123456787"
 
     rows = Info.query.filter(Info.product_id == product_id).all()
 
@@ -186,8 +190,10 @@ def public_info():
     Dict = {}
 
     for row in rows:
+        user = User.query.filter(User.uid == row.uid).first()
         Dict = {
-            'uid': row.uid,
+            'name': user.name,
+            'role': user.role,
             'product_id': row.product_id,
             'location': row.location,
             'date': row.date
