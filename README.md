@@ -11,6 +11,11 @@ Download web3 python library by typing "pip install web3" in the terminal or the
 
 2. FRONTEND:-
 
-Use npm install to install all the dependencies.
+Use npm install to install all the dependencies. Use npm start on terminal to start the localhost.
 
 3. BACKEND:-
+
+Firstly, setup virtual environment on the system using py -m venv env on windows and python3 -m venv env on linux/macOS.
+To activate virtual environment, use .\env\Scripts\activate on windows and source env/bin/activate on linux/macOS.
+Then pip install flask, flask-sqlalchemy.
+Then user python app.py on terminal while on root directory to start the backend server simultaneously running npm start on other terminal.
