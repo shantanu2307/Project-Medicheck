@@ -6,6 +6,7 @@ export default function QRCode(props) {
   function handleScan(data) {
     setResult(data);
     if (data !== null) {
+      props.xd(data);
       console.log(data);
       setLoading(false);
     }

@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Navbar from "./NB";
+import axios from "axios";
 import { Card, Form, Button } from "react-bootstrap";
 export default function Shipment() {
-  const [prodNumRef, setProdNumRef] = useState();
-  const [nameRef, setNameRef] = useState();
-  const [companyRef, setCompanyRef] = useState();
-  const [manRef, setManRef] = useState();
-  const [keyRef, setKeyRef] = useState();
-  const [priceRef, setPriceRef] = useState();
-  const [expRef, setExpRef] = useState();
-  function handleSubmit(e) {}
+  const prodNumRef = useRef();
+  const nameRef = useRef();
+  const manRef = useRef();
+  const keyRef = useRef();
+  const priceRef = useRef();
+  const expRef = useRef();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const response = await axios.post("", {});
+  }
   return (
     <>
       <Navbar />
@@ -54,6 +57,7 @@ export default function Shipment() {
                 backgroundColor: "blueviolet",
                 color: "white",
               }}
+              onClick={handleSubmit}
             >
               Create Shipment
             </Button>
