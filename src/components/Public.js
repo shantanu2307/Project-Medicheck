@@ -15,15 +15,15 @@ export default function Public() {
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(idState);
-    const response = await axios.get("/backend/public", {
-      product_id: idState.toString(),
+    const response = await axios.post("/backend/public", {
+      product_id: idState,
     });
     const x = response.data.map((userDetails) => {
       return (
         <div className="text-center">
           <div>
             <strong>Name:</strong> {userDetails.name} <strong>Role:</strong>
-            {"Retailer"} <strong>Location:</strong>:{userDetails.location}{" "}
+            {userDetails.role} <strong>Location:</strong>:{userDetails.location}{" "}
             <strong>Date:</strong>
             {userDetails.date}
           </div>
@@ -37,7 +37,6 @@ export default function Public() {
     <div>
       <StaticNavBar />
       <h1 className="header text-center"> Welcome Customer!</h1>
-
       <div className="mt-4 fs-5 text-center ">
         To check for authenticity, scan using QR Code or enter product ID.
       </div>

@@ -92,17 +92,6 @@ def save_profile():
     return 'New user added', 200
 
 
-@app.route('/backend/productinfo', methods=["GET"])
-def productinfo():
-    content = request.get_json()
-    product_id = content["product_id"]
-    
-    # blockchain
-    
-
-    return 'Successful', 200
-
-
 @app.route('/backend/medcreate', methods=["POST", "GET"])
 def medCreate():
 
@@ -156,31 +145,12 @@ def retailer():
     return json.dumps(List)
 
 
-# @app.route('/backend/retailerinfo', methods=["GET"])
-# def retailer_info():
-
-#     content = request.get_json()
-#     uid = content["uid"]
-#     product_id = content["product_id"]
-
-#     row = Info.query.filter(
-#         Info.uid == uid, Info.product_id == product_id).first()
-
-#     List = []
-#     Dict = {
-#         'uid': row.uid,
-#         'product_id': row.product_id,
-#         'date': row.date,
-#         'location': row.location
-#     }
-#     List.append(Dict)
-#     return json.dumps(List)
-
-
 @app.route('/backend/public', methods=["GET", "POST"])
 def public_info():
     content = request.get_json()
-    product_id = content["product_id"]
+    product_id = content['product_id']
+    print(content['product_id'])
+    product_id = int(product_id)
 
     rows = Info.query.filter(Info.product_id == product_id).all()
 

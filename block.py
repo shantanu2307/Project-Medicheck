@@ -12,11 +12,6 @@ web3.eth.defaultAccount = web3.eth.accounts[0]
 tx1_hash = Med.constructor().transact()
 tx_receipt = web3.eth.waitForTransactionReceipt(tx1_hash)
 contract = web3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
-# print(tx_receipt.contractAddress)
-
-# print(web3.isConnected())
-
-# contract = web3.eth.contract(abi=abi, bytecode=bytecode)
 
 def newmedd(name, mrp, expiry, manu_date):
     tx_hash = contract.functions.newMed(name, mrp, expiry, manu_date).call()
@@ -28,9 +23,3 @@ def addretailer(product_id, date, location, ret_name):
     tx_hash = contract.functions.addRetailer(
         product_id, date, location, ret_name).transact()
     return web3.toHex(tx_hash)
-
-# def publicInfo(product_id):
-# infor = contract.functions.medInfo(123456789).transact()
-# web3.eth.waitForTransactionReceipt(infor)
-# print(contract.functions.medInfo(123456789).call())
-

@@ -20,13 +20,13 @@ contract medicineSupply
         address manufacturer;
     }
     mapping(uint256=>medicine) medProd;
-    uint256 meds=0;
-    function newMed(string memory _medName,string memory _mrp,string memory _expiry,string memory,string memory _manuDate) public returns(bool)
+    uint256 meds=123456789;
+    function newMed(string memory _medName,string memory _mrp,string memory _expiry,string memory _manuDate) public returns(uint256)
     {
         medicine memory NewMed=medicine({medId:meds,medName:_medName,mrp:_mrp,expiry:_expiry,manufacturer:msg.sender,numRetail:0,manuDate:_manuDate});
         medProd[meds]=NewMed;
         meds++;
-        return true;
+        return meds-1;
     }
     function concatenate(string memory _a,string memory _b) pure internal returns(string memory)
     {
